@@ -15,3 +15,18 @@ elif edad == 17:
 else: 
     print("Eres menor de edad")
     
+################################
+# Bucles
+################################
+
+## FOR
+
+for i in range(5):
+    print(i) # imprimir los números del 0 al 4
+
+## WHILE
+
+contador = 0
+while contador < 5:
+    print(contador)
+    contador += 1 # contador = contador + 1
