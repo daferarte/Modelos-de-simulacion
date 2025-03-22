@@ -44,4 +44,13 @@ exponente = a ** b # 1000 (10^3)
 # Operadores de comparación
 ################################
 
+x = 5
+y = 10
+
+print (x > y ) # False
+print (x < y ) # True
+print (x == y ) # False
+print (x != y ) # True
+
+
 
