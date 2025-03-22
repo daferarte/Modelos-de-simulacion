@@ -50,3 +50,16 @@ print(len(frutas)) #longitud de la lista
 
 colores = ("rojo", "Verde", "azul")
 print(colores[1])
+
+################################################################
+# Diccionarios
+################################################################
+
+persona = {
+    "nombre":"Juan",
+    "edad": 30,
+    "ciudad": "Pasto"
+}
+
+print(persona["nombre"]) # Juan
+
