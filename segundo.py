@@ -62,4 +62,3 @@ persona = {
 }
 
 print(persona["nombre"]) # Juan
-
