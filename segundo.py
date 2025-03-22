@@ -30,3 +30,23 @@ contador = 0
 while contador < 5:
     print(contador)
     contador += 1 # contador = contador + 1
+    
+################################################################
+# Listas y tuplas
+################################################################
+
+################################
+# Lista (Mutables)
+################################
+
+frutas = ["manzana", "banana", "cereza"]
+frutas.append("uva") # agregar un elemento al final
+print(frutas[0]) # acceder al primer elemento
+print(len(frutas)) #longitud de la lista
+
+################################
+# Tuplas (Inmutables)
+################################
+
+colores = ("rojo", "Verde", "azul")
+print(colores[1])
