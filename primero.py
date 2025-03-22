@@ -21,3 +21,27 @@ numero_entero = int(numero) # Convierto a entero
 numero_flotante = float(numero) # Conversion a flotante
 print(numero_entero, numero_flotante)
 
+################################
+# Operadores Básicos
+################################
+
+################################
+# Operadores aritméticos
+################################
+
+a = 10
+b = 3
+
+suma = a+b # 13
+resta = a-b # 7
+multiplicacion = a*b # 30
+division = a/b # 3.333333
+division_entera = a // b # 3 (division entera)
+modulo = a % b # 1 (resto de la division)
+exponente = a ** b # 1000 (10^3)
+
+################################
+# Operadores de comparación
+################################
+
+
