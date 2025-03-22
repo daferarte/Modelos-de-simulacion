@@ -52,5 +52,13 @@ print (x < y ) # True
 print (x == y ) # False
 print (x != y ) # True
 
+################################
+# Operadores Lógicos
+################################
 
+verdadero = True
+falso = False
 
+print (verdadero and falso) # False
+print (verdadero or falso) # True
+print (not verdadero ) # False
