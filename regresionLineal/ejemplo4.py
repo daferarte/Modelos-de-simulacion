@@ -1,5 +1,13 @@
 # Caso de estudio -> horas de estudio
 
+# X es el número de horas de estudio.
+
+# Y es la calificación obtenida.
+
+# a es el intercepto (valor de Y cuando X = 0).
+
+# b es la pendiente (indica cuánto aumenta Y por cada hora extra de estudio).
+
 # importar librerias
 import numpy as np 
 import matplotlib.pyplot as plt
