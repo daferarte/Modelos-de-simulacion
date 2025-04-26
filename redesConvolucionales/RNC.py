@@ -104,3 +104,45 @@ classifier.fit(
     validation_steps=2000
 )
 
+# ==============================
+# Parte 3: prediccion sobre nueva imagen
+# ==============================
+
+import numpy as np
+from keras.preprocessing import image
+
+# Cargar una nueva imagen para predecir
+test_image = image.load_img('dataset/single_prediction/cat_or_dog_1.jpg', target_size=(64,64))
+
+# conversion a matriz numpy
+test_image = image.img_to_array(test_image)
+
+# Expansion de simensiones (Keras espera un lote de imagenes)
+test_image = np.expand_dims(test_image, axis=0)
+
+# Cargar una nueva imagen para predecir
+test_image2 = image.load_img('dataset/single_prediction/cat_or_dog_2.jpg', target_size=(64,64))
+
+# conversion a matriz numpy
+test_image2 = image.img_to_array(test_image2)
+
+# Expansion de simensiones (Keras espera un lote de imagenes)
+test_image2 = np.expand_dims(test_image2, axis=0)
+
+# prediccion del modelo
+result = classifier.predict(test_image)
+result2 = classifier.predict(test_image2)
+
+# Diccionario de clases: {'cats': 0, 'dogs': 1}
+class_names = training_set.class_indices
+
+print("Resultado 1")
+print(f"Res1 {result[0][0]}", f"Res2 {result2[0][0]}")
+
+# Decodificacion del resultado 
+prediction = 'Perro' if result[0][0] >= 0.5 else 'Gato'
+prediction2 = 'Perro' if result2[0][0] >= 0.5 else 'Gato'
+
+# Mostrar el resultado
+print(f"Prediccion 1: {prediction}")
+print(f"Prediccion 2: {prediction2}")
