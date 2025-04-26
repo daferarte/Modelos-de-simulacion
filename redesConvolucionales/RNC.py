@@ -1,12 +1,10 @@
 # Creando la red neuronal convolucional
 # Utilizamos keras
-from keras.models import Sequential
-from keras.layers import Dense
-
-# las siguientes librerias sirven para que la red realice la convolucion, agrupamiento y aplanado
-from keras.layers import Conv2D # convolucion
-from keras.layers import MaxPooling2D # Agrupamiento
-from keras.layers import Flatten # Aplanamiento
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.preprocessing import image
+import numpy as np
 
 # inicializamos la red convolucional
 classifier = Sequential()
@@ -40,7 +38,7 @@ classifier.add(Flatten())
 # capa densa oculta
 # - 128 neuronas con activacion relu
 
-classifier.add(Dense(units=128, activacion='relu'))
+classifier.add(Dense(units=128, activation='relu'))
 
 # Capa de salida
 # - 1 neurona con activacion sigmoide para clasificacion binaria (0 o 1)
@@ -51,13 +49,11 @@ classifier.add(Dense(units=1, activation='sigmoid'))
 # - optimizacion con Adam
 # - Funcion de perdida binaria (ideal para dos clases)
 # - Metrica de evaluacion: precision
-classifier.compile(optimizer='adam', loss='binary_ccrossentropy', metrics=['accuracy'])
+classifier.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # =================================
 # Parte 2: procesamiento de datos
 # ================================
-
-from keras.preprocessing.image import ImageDataGenerator
 
 # Generador de datos de entrenamiento con aumento (data augmentation)
 # - mejora la generalizacion del modelo y evita sobreajuste
@@ -107,9 +103,6 @@ classifier.fit(
 # ==============================
 # Parte 3: prediccion sobre nueva imagen
 # ==============================
-
-import numpy as np
-from keras.preprocessing import image
 
 # Cargar una nueva imagen para predecir
 test_image = image.load_img('dataset/single_prediction/cat_or_dog_1.jpg', target_size=(64,64))
