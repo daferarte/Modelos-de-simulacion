@@ -52,3 +52,55 @@ classifier.add(Dense(units=1, activation='sigmoid'))
 # - Funcion de perdida binaria (ideal para dos clases)
 # - Metrica de evaluacion: precision
 classifier.compile(optimizer='adam', loss='binary_ccrossentropy', metrics=['accuracy'])
+
+# =================================
+# Parte 2: procesamiento de datos
+# ================================
+
+from keras.preprocessing.image import ImageDataGenerator
+
+# Generador de datos de entrenamiento con aumento (data augmentation)
+# - mejora la generalizacion del modelo y evita sobreajuste
+
+train_datagen = ImageDataGenerator(
+    rescale = 1./255, # Normaliza los pixeles entre 0 y 1
+    shear_range = 0.2, # Aplica transformaciones diagonales
+    zoom_range = 0.2, # Aplica zoom aleatorio
+    horizontal_flip = True # Invierte horizontalemnte las imagenes
+)
+
+# Generador de datos de validacion / prueba sin aumento
+
+test_datagen = ImageDataGenerator(rescale = 1./255)
+
+# Carga de imagenes de entrenamiento desde el directorio
+# Lassubcarpetas dentro de 'training_set' deben ser cats y dogs
+
+training_set = train_datagen.flow_from_directory(
+    'dataset/training_set', # Directorio imagenes
+    target_size=(64, 64), # Redimensiona las imagenes
+    batch_size=32, # Numero de imagenes por lote
+    class_mode = 'binary' # clasificacion binaria
+)
+
+# carga de imagenes de prueba
+test_set = test_datagen.flow_from_directory(
+    'dataset/training_set', # Directorio imagenes
+    target_size=(64, 64), # Redimensiona las imagenes
+    batch_size=32, # Numero de imagenes por lote
+    class_mode = 'binary' # clasificacion binaria
+)
+
+# Entrenamiento del modelo con los datos cargados
+# steps_per_epoch: numero de lotes por epoca
+# epochs: numero de iteraciones completas sobre el set de entrenamiento
+# validation_steps: numero de lotes de validacion por epoca
+
+classifier.fit(
+    training_set,
+    steps_per_epoch=8000,
+    epochs=2,
+    validation_data=test_set,
+    validation_steps=2000
+)
+
